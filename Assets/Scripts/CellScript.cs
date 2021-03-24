@@ -5,6 +5,10 @@ using UnityEngine;
 public class CellScript : MonoBehaviour
 {
     
+
+    public int CellID;
+
+
     void Start()
     {
         

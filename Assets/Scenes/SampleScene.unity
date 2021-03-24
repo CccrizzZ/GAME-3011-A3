@@ -747,9 +747,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2696355151705345218, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
+      propertyPath: diff
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696355151705345218, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
       propertyPath: Cellref
       value: 
       objectReference: {fileID: 9016289302848784177, guid: b21befd5632073042ab397d05c5ffeab, type: 3}
+    - target: {fileID: 6299895038949005345, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
+      propertyPath: m_Spacing.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299895038949005345, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
+      propertyPath: m_Spacing.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942815518144283751, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942815518144283751, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
 --- !u!224 &1727948070 stripped
