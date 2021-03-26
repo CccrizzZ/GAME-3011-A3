@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 442648878899042074}
   m_Layer: 5
   m_Name: Match3Canvas
-  m_TagString: Untagged
+  m_TagString: Match3Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7870910116502597298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a64b23069de544a8dfbad135ff605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diff: 0
   imageArray:
   - {fileID: 21300000, guid: 6c60b1bed805bdd418a05ecf5d01301c, type: 3}
   - {fileID: 21300000, guid: a3b744e4c8caf96459f4a0fe65b6d238, type: 3}
@@ -220,6 +221,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d1151dec1cf23f147b33325e8eb6054c, type: 3}
   - {fileID: 21300000, guid: 91d427940f0a3814181ad15c77ee3e42, type: 3}
   - {fileID: 21300000, guid: 2e91200d76b1b1442a6bca99dc7df309, type: 3}
+  BoardArray: []
   col: 5
   row: 5
   Cellref: {fileID: 9016289302848784177, guid: b21befd5632073042ab397d05c5ffeab, type: 3}
+  activated: 0

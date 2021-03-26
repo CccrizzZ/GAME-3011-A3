@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7757794377617172998}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,9 +87,11 @@ GameObject:
   - component: {fileID: 5437990238475654380}
   - component: {fileID: 1211069864058437737}
   - component: {fileID: 7829721228735106057}
+  - component: {fileID: 198924864161214382}
+  - component: {fileID: 5264399696867315133}
   m_Layer: 5
   m_Name: Cell
-  m_TagString: Untagged
+  m_TagString: cellparent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,3 +166,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3100303407d874eb15261275338cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasRef: {fileID: 0}
+  activated: 0
+  CellID: 0
+--- !u!223 &198924864161214382
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016289302848784177}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &5264399696867315133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016289302848784177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
