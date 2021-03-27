@@ -27,6 +27,11 @@ public class Match3Canvas : MonoBehaviour
     public List<GameObject> BoardArray;
 
 
+    // array for sounds
+    public AudioSource[] SoundArray;
+
+
+
     // col and row for board
     public int col;
     public int row;
@@ -47,7 +52,13 @@ public class Match3Canvas : MonoBehaviour
     // random id for cell
     int randID;
 
-    
+    // prevent repeating tiles
+    int prevID;
+    int randomRange = 0;
+    int randomRangeEasy = 4;
+    int randomRangeMedium = 5;
+    int randomRangeHard = 6;
+
 
     void Start()
     {
@@ -76,37 +87,57 @@ public class Match3Canvas : MonoBehaviour
                 newCell.transform.SetParent(transform, false);
                 
 
+
                 // set how many different sprites according to difficulty
                 switch (diff)
                 {
                     case Difficulties.EASY:
-                        randID = Random.Range(0, 3);
+                        randomRange = randomRangeEasy;
                         break;
                     case Difficulties.MEDIUM:
-                        randID = Random.Range(0, 4);
+                        randomRange = randomRangeMedium;
                         break;
                     case Difficulties.HARD:
-                        randID = Random.Range(0, 6);
+                        randomRange = randomRangeHard;
                         break;
                     default:
                         break;
                 }
                 
 
+                // set id to random range
+                randID = Random.Range(0, randomRange);
+
+                // if random range is set
+                if (randomRange != 0)
+                {
+                    // while same id generated, regenerate it
+                    while (prevID == randID)
+                    {
+                        randID = Random.Range(0, randomRange);
+                    }
+                }
+                
+                // set previous id to generated id
+                prevID = randID;
+
+
+
+
                 // set cell image
                 newCell.transform.Find("Icon").GetComponent<Image>().sprite = imageArray[randID];
                 
                 // set cell ID
-                newCell.GetComponent<CellScript>().CellID = randID;
+                newCell.GetComponent<CellScript>().CellID = randID + 1;
             
-
 
                 // add cell to board array
                 BoardArray.Add(newCell);
-
             
+
             }
         }
+
 
         // push the panel to the lerp start position
         rectRef.localPosition = new Vector3(0,800,0);
@@ -115,9 +146,13 @@ public class Match3Canvas : MonoBehaviour
     void Update()
     {  
 
-
+        
         if (activated)
         {
+            if (Time.frameCount % 60 == 0)
+            {
+                FindMatchForAllCells();
+            }
             return;
         }
         else if(rectRef.localPosition.y >= 50)
@@ -127,10 +162,16 @@ public class Match3Canvas : MonoBehaviour
         else
         {
             activated = true;
+
+            // set all cell to active
             foreach (var item in BoardArray)
             {
-                item.GetComponent<CellScript>().activated = true;
-                item.GetComponent<CellScript>().GetNeighbors();
+                if (item != null)
+                {
+                    item.GetComponent<CellScript>().activated = true;
+
+                }
+                
             }
         }
 
@@ -138,38 +179,41 @@ public class Match3Canvas : MonoBehaviour
 
     }
 
-    void AddNewCell()
+
+    public void FindMatchForAllCells()
     {
 
-    }
-    
-    public void UpdateBoardArray()
-    {
+
+        foreach (var item in BoardArray)
+        {
+            if (item != null)
+            {
+                item.GetComponent<CellScript>().FindMatchAllDirection();
+            }
+        }
+        
+
         BoardArray.Clear();
 
         var temp = GameObject.FindGameObjectsWithTag("cellparent");
-        
-        int i = 1;
-        string tempStr = "";
         foreach (var item in temp)
         {
             BoardArray.Add(item);
-            // print(item.transform.Find("Icon").GetComponent<Image>().sprite.name);
-
-            tempStr += item.transform.Find("Icon").GetComponent<Image>().sprite.name + ", ";
-
-            if (i % 5 == 0)
-            {
-                print(tempStr);
-                tempStr = "";
-            }
-
-            i++;
         }
-        
+    }  
 
+
+
+    public void PlayMoveSound()
+    {
+        SoundArray[0].Play();
         
-        
+    }
+
+    public void PlayMatchSound()
+    {
+        SoundArray[1].Play();
 
     }
 }
+

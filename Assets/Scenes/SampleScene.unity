@@ -755,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2696355151705345218, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
       propertyPath: diff
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2696355151705345218, guid: 4032988ae798b8a4f8bcec71b544a862, type: 3}
       propertyPath: Cellref
