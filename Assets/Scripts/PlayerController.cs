@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,15 @@ public class PlayerController : MonoBehaviour
 {
 
 
-    Canvas Match3Canvas;
+    public GameObject Match3Canvas;
+    public GameObject Match3Panel;
 
+
+    
     void Start()
     {
-        Cursor.visible = true;
+        Application.targetFrameRate = 60;
+        // Cursor.visible = false;
     }
 
     void Update()
@@ -20,6 +25,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             print("keydown");
+            // Cursor.visible = true;
+            if (GameObject.FindGameObjectWithTag("Match3Panel") == null)
+            {
+                Instantiate(Match3Panel, Match3Canvas.transform);
+                
+            }
+
         }
     }
 }

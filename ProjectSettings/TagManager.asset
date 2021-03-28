@@ -8,6 +8,10 @@ TagManager:
   - cell
   - EventSystem
   - cellparent
+  - ClockSeconds
+  - ScoreText
+  - GameOverPanel
+  - Match3Panel
   layers:
   - Default
   - TransparentFX

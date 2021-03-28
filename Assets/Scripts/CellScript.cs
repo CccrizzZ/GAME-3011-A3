@@ -71,13 +71,11 @@ public class CellScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
-
         if (activated)
         {
             // rectTransform.anchoredPosition += eventData.delta / canvasRef.scaleFactor;
             
         }
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -87,9 +85,7 @@ public class CellScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
             SetIconAvaliable();
             RunCanvasRaycast();
             
-            
         }
-        
 
     }
 
@@ -192,7 +188,7 @@ public class CellScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
 
         // draw ray
-        Debug.DrawRay(transform.position, dir, Color.red, 1.0f);
+        Debug.DrawRay(transform.position, dir, Color.red, 0.5f);
 
         
         // string temp = "";
@@ -256,11 +252,20 @@ public class CellScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
                 if (isNeighbor)
                 {
                     
-                    // destroy tiles
-                    Destroy(item);
+                    // add score
+                    M3CRef.AddScore(100);
+
+                    // reset time limit
+                    M3CRef.ResetTimeLimit();
 
                     // play sound effect
                     M3CRef.PlayMatchSound();
+                    
+                    // destroy tiles
+                    Destroy(item);
+                    
+                    // refresh board
+                    // M3CRef.RefreshBoard();
                 }
             }
         }

@@ -52,16 +52,35 @@ public class Match3Canvas : MonoBehaviour
     // random id for cell
     int randID;
 
+
     // prevent repeating tiles
     int prevID;
+    
+    // random range for different difficulties
     int randomRange = 0;
     int randomRangeEasy = 4;
     int randomRangeMedium = 5;
     int randomRangeHard = 6;
 
 
+    // score related
+    int PlayerScore = 0;
+    public Text ScoreIndicator;
+
+    Clock clockref;
+
+
     void Start()
     {
+        // init score
+        // ScoreIndicator = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
+        ScoreIndicator.text = PlayerScore.ToString();
+        
+        // init clock
+        clockref = GetComponent<Clock>();
+        
+
+
         // board will be activated after stop moving 
         activated = false;
         // get rect transform of panel
@@ -149,7 +168,7 @@ public class Match3Canvas : MonoBehaviour
         
         if (activated)
         {
-            if (Time.frameCount % 60 == 0)
+            if (Time.frameCount % 30 == 0)
             {
                 FindMatchForAllCells();
             }
@@ -162,6 +181,13 @@ public class Match3Canvas : MonoBehaviour
         else
         {
             activated = true;
+            
+            if(!clockref.isTicking)
+            {
+                // start clock
+                clockref.isTicking = true;
+
+            }
 
             // set all cell to active
             foreach (var item in BoardArray)
@@ -180,10 +206,25 @@ public class Match3Canvas : MonoBehaviour
     }
 
 
+    public void DisableAllCells()
+    {
+        // set all cell to active
+        foreach (var item in BoardArray)
+        {
+            if (item != null)
+            {
+                item.GetComponent<CellScript>().activated = false;
+
+            }
+            
+        }
+    }
+
+    
     public void FindMatchForAllCells()
     {
 
-
+        // call find match on all tiles
         foreach (var item in BoardArray)
         {
             if (item != null)
@@ -191,8 +232,11 @@ public class Match3Canvas : MonoBehaviour
                 item.GetComponent<CellScript>().FindMatchAllDirection();
             }
         }
-        
+        RefreshBoard();
+    }  
 
+    public void RefreshBoard()
+    {
         BoardArray.Clear();
 
         var temp = GameObject.FindGameObjectsWithTag("cellparent");
@@ -200,8 +244,26 @@ public class Match3Canvas : MonoBehaviour
         {
             BoardArray.Add(item);
         }
-    }  
+    }
 
+
+    public void AddScore(int score)
+    {
+        PlayerScore += score;
+        if (ScoreIndicator != null)
+        {
+            ScoreIndicator.text = PlayerScore.ToString();
+
+        }
+
+    }
+
+
+    public void ResetTimeLimit()
+    {
+        clockref.ResetClock();
+
+    }
 
 
     public void PlayMoveSound()
